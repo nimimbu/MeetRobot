@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+    <!-- Robot head -->
+    <rect x="40" y="50" width="120" height="110" rx="12" fill="#2d3748" stroke="#1a202c" stroke-width="3"/>
+
+    <!-- Antenna -->
+    <rect x="95" y="35" width="10" height="15" rx="5" fill="#1a202c"/>
+
+    <!-- Left eye -->
+    <rect x="65" y="80" width="25" height="25" rx="3" fill="#0099ff">
+        <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Right eye -->
+    <rect x="110" y="80" width="25" height="25" rx="3" fill="#0099ff">
+        <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Mouth -->
+    <rect x="75" y="130" width="50" height="10" rx="5" fill="#0099ff"/>
+
+    <style>
+        @media (prefers-color-scheme: light) {
+            rect { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+        }
+        @media (prefers-color-scheme: dark) {
+            rect { filter: drop-shadow(0 2px 4px rgba(255,255,255,0.1)); }
+        }
+    </style>
+</svg>

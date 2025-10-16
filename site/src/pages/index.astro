@@ -1,0 +1,623 @@
+---
+const robotName = "meetRobot";
+const googleFormUrl = "https://forms.google.com/your-form-id-here";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>MeetRobot Foundation - Community-Trained Humanoid Robots</title>
+		<meta name="description" content="Training humanoid robots for the common good. Open-source, community-driven robotics built by the people they serve." />
+		<meta name="keywords" content="humanoid robots, open source robotics, community robotics, nonprofit, kbot, robot training, accessible AI" />
+		<meta property="og:title" content="MeetRobot Foundation - Community-Trained Humanoid Robots" />
+		<meta property="og:description" content="Training humanoid robots for the common good. Open-source, community-driven robotics built by the people they serve." />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://meetrobot.org" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="MeetRobot Foundation - Community-Trained Humanoid Robots" />
+		<meta name="twitter:description" content="Training humanoid robots for the common good. Open-source, community-driven robotics built by the people they serve." />
+	</head>
+	<body>
+		<main class="container">
+			<section class="hero">
+				<div class="name-tag-center">
+					<div class="name-tag-main">
+						<div class="hello-header">HELLO THERE!</div>
+						<div class="my-name-is">MY NAME IS</div>
+						<div class="name-handwritten">{robotName}</div>
+					</div>
+				</div>
+
+				<div class="robot-peek">
+					<div class="robot-head-large">
+						<div class="robot-eyes">
+							<span class="eye left"></span>
+							<span class="eye right"></span>
+						</div>
+						<div class="robot-mouth"></div>
+					</div>
+				</div>
+
+				<div class="content-section">
+					<h2>What We Do</h2>
+					<p class="intro-text">We help people train humanoid robots to be useful in their communities—not for corporate profit, but for the common good. Whether it's helping in senior centers, schools, or community spaces, these robots learn from real people doing real work.</p>
+
+					<h2>How It Works</h2>
+					<p class="intro-text">Anyone can start a local MeetRobot node with just one robot and a passion for helping their community. You teach the robot through hands-on interaction—no programming required, AI tools help with the technical stuff. Everything you learn gets shared openly so other communities can benefit.</p>
+
+					<p class="analogy">Think of it like teaching a very eager, very clumsy intern—except this intern never gets tired, can be copied infinitely, and everything it learns can be shared with robots around the world.</p>
+
+					<h2>Why We're Different</h2>
+					<p class="intro-text">Most robot companies train their machines behind closed doors, optimizing for speed and profit. We train ours in public, optimizing for human dignity. The data stays open, the methods stay transparent, and the results belong to everyone.</p>
+
+					<div class="principles-section">
+						<h3>How we train robots:</h3>
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">Robots should be trained by the people they serve, not the companies that profit from them</div>
+						</div>
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">The best training data comes from diverse communities with diverse needs</div>
+						</div>
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">Every local node improves the global network—your robot's lessons help everyone's robots</div>
+						</div>
+
+						<h3>How we stay open:</h3>
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">All our code, methods, and finances are public (only passwords and personal info stay private)</div>
+						</div>
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">Anyone can copy our approach and start their own node—that's the goal, not a threat</div>
+						</div>
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">We curate what becomes the "official" MeetRobot methodology based on quality and values</div>
+						</div>
+
+						<h3>How we stay accessible:</h3>
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">One person with one robot is enough to begin</div>
+						</div>
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">AI tools handle the technical complexity—you don't need to be a programmer</div>
+						</div>
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">If running a node requires a team or bureaucracy, we've made it too complicated</div>
+						</div>
+					</div>
+
+					<h2>Where We Are Now</h2>
+					<p class="reality-note"><strong>Let's be honest:</strong> Humanoid robots are brand new, clumsy, and not ready for everything you see in sci-fi movies. They're more "enthusiastic toddler" than "helpful assistant."</p>
+
+					<div class="current-reality">
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">Safety first, always - we're developing protocols as we go</div>
+						</div>
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">We're figuring out safe interaction methods together as a community</div>
+						</div>
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">Progress is slow, mistakes happen, learning is public</div>
+						</div>
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">This is ground-floor stuff - early experiments, careful steps</div>
+						</div>
+					</div>
+
+					<p class="transparency-note">Companies hide limitations until products are polished. We show you the messy middle because that's where the learning happens. If you want to see a robot perfectly pour coffee, wait 5 years and buy a commercial model. If you want to help figure out how robots can be safely useful, join us now.</p>
+
+					<h2>Why We're a Nonprofit</h2>
+					<p class="intro-text">These aren't business decisions. They're principles for building technology worth trusting.</p>
+
+					<p class="support-text"><strong>When you support MeetRobot Foundation, you're supporting:</strong></p>
+					<div class="support-items">
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">Community-driven training principles</div>
+						</div>
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">Radical transparency in robotics</div>
+						</div>
+						<div class="principle">
+							<div class="principle-marker"></div>
+							<div class="principle-text">Open methodology that anyone can audit</div>
+						</div>
+					</div>
+
+					<h2>Get Involved</h2>
+					<div class="get-involved">
+						<div class="involvement-option">
+							<strong>Start a node</strong>
+							<p>Buy a robot, do a demo, see where it goes</p>
+						</div>
+						<div class="involvement-option">
+							<strong>Join a node</strong>
+							<p>Find a local group and help train</p>
+						</div>
+						<div class="involvement-option">
+							<strong>Support the network</strong>
+							<p>Donate to keep the infrastructure running</p>
+						</div>
+						<a href="https://github.com/nimimbu/MeetRobot" class="involvement-option involvement-link" target="_blank" rel="noopener noreferrer">
+							<strong>Check out our code</strong>
+							<p>Audit, fork, improve</p>
+						</a>
+					</div>
+
+					<a href="#" id="early-access-btn" class="cta-button">
+						Join the Movement
+					</a>
+				</div>
+			</section>
+		</main>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+				min-height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: #333;
+				position: relative;
+				overflow-x: hidden;
+			}
+
+			body::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background:
+					radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+					radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+				pointer-events: none;
+			}
+
+			.container {
+				width: 100%;
+				min-height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 2rem;
+			}
+
+			.hero {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				max-width: 900px;
+				z-index: 1;
+			}
+
+			/* Name Tag */
+			.name-tag-center {
+				position: relative;
+				z-index: 3;
+				margin-bottom: 3rem;
+			}
+
+			.name-tag-main {
+				background: #ffffff;
+				border-radius: 16px;
+				padding: 3rem 4rem 4rem;
+				box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+				text-align: center;
+				position: relative;
+				transform: rotate(-2deg);
+			}
+
+			.name-tag-main::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 140px;
+				background: #ff4444;
+				border-radius: 16px 16px 0 0;
+			}
+
+			.hello-header {
+				font-family: 'Arial Black', Arial, sans-serif;
+				font-size: 3.5rem;
+				font-weight: 900;
+				color: #ffffff;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				position: relative;
+				z-index: 2;
+				margin-bottom: 0.5rem;
+				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			.my-name-is {
+				font-family: Arial, sans-serif;
+				font-size: 1.2rem;
+				color: #ffffff;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				position: relative;
+				z-index: 2;
+				margin-bottom: 2rem;
+				font-weight: 400;
+			}
+
+			.name-handwritten {
+				font-family: 'Brush Script MT', cursive, 'Comic Sans MS', sans-serif;
+				font-size: 5rem;
+				font-weight: bold;
+				color: #2d3748;
+				position: relative;
+				z-index: 2;
+				transform: rotate(1deg);
+				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+				margin-top: 1rem;
+			}
+
+			/* Robot Peek */
+			.robot-peek {
+				position: absolute;
+				top: -20px;
+				right: -80px;
+				z-index: 1;
+				transform: rotate(12deg);
+				filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3));
+			}
+
+			.robot-head-large {
+				width: 200px;
+				height: 170px;
+				background: linear-gradient(145deg, #2d3748, #4a5568);
+				border-radius: 18px;
+				position: relative;
+				border: 3px solid #1a202c;
+				transform: scale(1.8);
+			}
+
+			.robot-head-large::before {
+				content: '';
+				position: absolute;
+				top: -12px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 60px;
+				height: 12px;
+				background: #1a202c;
+				border-radius: 6px;
+			}
+
+			.robot-eyes {
+				position: absolute;
+				top: 40px;
+				left: 50%;
+				transform: translateX(-50%);
+				display: flex;
+				gap: 40px;
+			}
+
+			.eye {
+				width: 28px;
+				height: 28px;
+				background: #0099ff;
+				border-radius: 4px;
+				box-shadow: 0 0 18px rgba(0, 153, 255, 0.7);
+				animation: blink 3s infinite;
+				border: 2px solid #005577;
+			}
+
+			@keyframes blink {
+				0%, 90%, 100% { opacity: 1; }
+				95% { opacity: 0.3; }
+			}
+
+			.robot-mouth {
+				position: absolute;
+				bottom: 35px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 55px;
+				height: 12px;
+				background: #0099ff;
+				border-radius: 6px;
+				box-shadow: 0 0 12px rgba(0, 153, 255, 0.5);
+			}
+
+			/* Content Section */
+			.content-section {
+				text-align: left;
+				padding: 3rem 2rem;
+				max-width: 800px;
+			}
+
+			.content-section h2 {
+				font-size: 1.8rem;
+				font-weight: 700;
+				margin-top: 2.5rem;
+				margin-bottom: 1rem;
+				color: #ffffff;
+				line-height: 1.3;
+				text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+			}
+
+			.content-section h2:first-child {
+				margin-top: 0;
+			}
+
+			.content-section h3 {
+				font-size: 1.3rem;
+				font-weight: 600;
+				margin-top: 2rem;
+				margin-bottom: 1rem;
+				color: rgba(255, 255, 255, 0.95);
+				text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+			}
+
+			.intro-text {
+				font-size: 1.1rem;
+				line-height: 1.7;
+				color: rgba(255, 255, 255, 0.95);
+				margin-bottom: 1.5rem;
+				text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+			}
+
+			.analogy {
+				font-size: 1.05rem;
+				line-height: 1.7;
+				color: rgba(255, 255, 255, 0.9);
+				font-style: italic;
+				margin: 1.5rem 0;
+				padding: 1.5rem;
+				background: rgba(255, 255, 255, 0.1);
+				border-radius: 12px;
+				border-left: 3px solid rgba(255, 255, 255, 0.5);
+				text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+				backdrop-filter: blur(10px);
+			}
+
+			.principles-section {
+				margin: 2rem 0;
+			}
+
+			.principle {
+				display: flex;
+				align-items: flex-start;
+				gap: 1rem;
+				margin: 0.8rem 0;
+			}
+
+			.principle-marker {
+				min-width: 8px;
+				width: 8px;
+				height: 8px;
+				background: #ffffff;
+				border-radius: 50%;
+				margin-top: 0.5rem;
+				box-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
+			}
+
+			.principle-text {
+				font-size: 1rem;
+				color: rgba(255, 255, 255, 0.95);
+				line-height: 1.6;
+				text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+			}
+
+			.reality-note {
+				font-size: 1.05rem;
+				line-height: 1.6;
+				color: rgba(255, 255, 255, 0.95);
+				margin: 1.5rem 0;
+				padding: 1.5rem;
+				background: rgba(255, 255, 255, 0.15);
+				border-radius: 12px;
+				text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+				backdrop-filter: blur(10px);
+			}
+
+			.current-reality {
+				margin: 1.5rem 0;
+			}
+
+			.transparency-note {
+				font-size: 1rem;
+				line-height: 1.7;
+				color: rgba(255, 255, 255, 0.9);
+				font-style: italic;
+				margin: 1.5rem 0;
+				padding: 1.5rem;
+				background: rgba(255, 255, 255, 0.1);
+				border-radius: 12px;
+				border-left: 3px solid rgba(255, 255, 255, 0.5);
+				text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+				backdrop-filter: blur(10px);
+			}
+
+			.support-text {
+				font-size: 1.05rem;
+				color: rgba(255, 255, 255, 0.95);
+				margin: 1rem 0;
+				text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+			}
+
+			.support-items {
+				margin: 1rem 0 2rem 0;
+			}
+
+			.get-involved {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1.5rem;
+				margin: 2rem 0;
+			}
+
+			.involvement-option {
+				padding: 1.5rem;
+				background: rgba(255, 255, 255, 0.15);
+				border-radius: 12px;
+				backdrop-filter: blur(10px);
+			}
+
+			.involvement-link {
+				text-decoration: none;
+				transition: all 0.3s ease;
+				display: block;
+			}
+
+			.involvement-link:hover {
+				background: rgba(255, 255, 255, 0.25);
+				transform: translateY(-2px);
+			}
+
+			.involvement-option strong {
+				display: block;
+				font-size: 1.1rem;
+				color: #ffffff;
+				margin-bottom: 0.5rem;
+				text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+			}
+
+			.involvement-option p {
+				font-size: 0.95rem;
+				color: rgba(255, 255, 255, 0.9);
+				line-height: 1.5;
+				margin: 0;
+				text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+			}
+
+			.cta-button {
+				display: inline-block;
+				background: #ffffff;
+				color: #667eea;
+				padding: 1.2rem 3rem;
+				border-radius: 50px;
+				text-decoration: none;
+				font-weight: 700;
+				font-size: 1.1rem;
+				transition: all 0.3s ease;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				margin-top: 2rem;
+			}
+
+			.cta-button:hover {
+				transform: translateY(-3px);
+				box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+				background: rgba(255, 255, 255, 0.95);
+			}
+
+			/* Responsive */
+			@media (max-width: 768px) {
+				.container {
+					padding: 1rem;
+				}
+
+				.name-tag-main {
+					padding: 2rem 2.5rem 3rem;
+					transform: rotate(-1deg);
+				}
+
+				.name-tag-main::before {
+					height: 100px;
+				}
+
+				.hello-header {
+					font-size: 2.2rem;
+					letter-spacing: 0.1em;
+				}
+
+				.my-name-is {
+					font-size: 1rem;
+					margin-bottom: 1.5rem;
+				}
+
+				.name-handwritten {
+					font-size: 3.5rem;
+				}
+
+				.robot-peek {
+					right: -50px;
+					top: -10px;
+					transform: rotate(10deg);
+				}
+
+				.robot-head-large {
+					transform: scale(1.2);
+				}
+
+				.content-section {
+					padding: 2rem 1.5rem;
+				}
+
+				.content-section h2 {
+					font-size: 1.5rem;
+				}
+
+				.content-section h3 {
+					font-size: 1.2rem;
+				}
+
+				.intro-text {
+					font-size: 1rem;
+				}
+
+				.get-involved {
+					grid-template-columns: 1fr;
+				}
+
+				.cta-button {
+					padding: 1rem 2rem;
+					font-size: 1rem;
+				}
+			}
+		</style>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				const googleFormUrl = 'https://forms.google.com/your-form-id-here';
+				const earlyAccessBtn = document.getElementById('early-access-btn');
+
+				earlyAccessBtn.addEventListener('click', function(e) {
+					e.preventDefault();
+					if (googleFormUrl.includes('your-form-id-here')) {
+						alert('Please set up your Google Form URL in the configuration!');
+					} else {
+						window.open(googleFormUrl, '_blank');
+					}
+				});
+
+				earlyAccessBtn.href = googleFormUrl;
+			});
+		</script>
+	</body>
+</html>

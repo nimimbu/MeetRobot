@@ -1,0 +1,51 @@
+# Secrets and sensitive data
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials.json
+
+# Personal Identifiable Information
+**/pii/
+**/personal/
+
+# Obsidian workspace (user-specific)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspaces.json
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Astro build artifacts
+.astro/
+dist/
+.vercel/
+.netlify/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
