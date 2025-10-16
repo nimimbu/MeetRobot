@@ -22,8 +22,8 @@ const sections = {
 	getInvolved: []
 };
 
-// Extract content from the rendered markdown
-const contentBody = valuesEntry.body;
+// Extract content from the rendered markdown - normalize line endings
+const contentBody = valuesEntry.body.replace(/\r\n/g, '\n');
 
 // Parse What We Do section
 const whatWeDoMatch = contentBody.match(/## What We Do\n\n([\s\S]*?)(?=\n## )/);
@@ -41,31 +41,31 @@ if (howItWorksMatch) {
 }
 
 // Parse Why We're Different section
-const whyDifferentMatch = contentBody.match(/## Why We're Different\n\n([\s\S]*?)(?=\n---)/);
+const whyDifferentMatch = contentBody.match(/## Why We're Different\n\n([\s\S]*?)(?=\n\n---)/);
 if (whyDifferentMatch) {
 	sections.whyDifferent = whyDifferentMatch[1].trim();
 }
 
 // Parse training principles
-const trainMatch = contentBody.match(/### How we train robots:\n\n([\s\S]*?)(?=\n### )/);
+const trainMatch = contentBody.match(/### How we train robots:\n\n([\s\S]*?)(?=\n\n### )/);
 if (trainMatch) {
 	sections.trainPrinciples = trainMatch[1].trim().split('\n\n').filter(p => p.trim());
 }
 
 // Parse open principles
-const openMatch = contentBody.match(/### How we stay open:\n\n([\s\S]*?)(?=\n### )/);
+const openMatch = contentBody.match(/### How we stay open:\n\n([\s\S]*?)(?=\n\n### )/);
 if (openMatch) {
 	sections.openPrinciples = openMatch[1].trim().split('\n\n').filter(p => p.trim());
 }
 
 // Parse accessible principles
-const accessMatch = contentBody.match(/### How we stay accessible:\n\n([\s\S]*?)(?=\n---)/);
+const accessMatch = contentBody.match(/### How we stay accessible:\n\n([\s\S]*?)(?=\n\n---)/);
 if (accessMatch) {
 	sections.accessiblePrinciples = accessMatch[1].trim().split('\n\n').filter(p => p.trim());
 }
 
 // Parse Where We Are Now
-const whereMatch = contentBody.match(/## Where We Are Now \(2025\)\n\n([\s\S]*?)(?=\n---)/);
+const whereMatch = contentBody.match(/## Where We Are Now \(2025\)\n\n([\s\S]*?)(?=\n\n---)/);
 if (whereMatch) {
 	const whereText = whereMatch[1].trim();
 	const parts = whereText.split('\n\n');
@@ -75,18 +75,18 @@ if (whereMatch) {
 }
 
 // Parse Why We're a Nonprofit
-const nonprofitMatch = contentBody.match(/## Why We're a Nonprofit\n\n([\s\S]*?)(?=\n---)/);
+const nonprofitMatch = contentBody.match(/## Why We're a Nonprofit\n\n([\s\S]*?)(?=\n\n---)/);
 if (nonprofitMatch) {
 	const text = nonprofitMatch[1].trim();
 	sections.whyNonprofit = text.split('\n\n')[0];
-	const supportMatch = text.match(/When you support MeetRobot Foundation, you're supporting:\n([\s\S]*?)(?=\nWe don't)/);
+	const supportMatch = text.match(/When you support MeetRobot Foundation, you're supporting:\n([\s\S]*?)(?=\n\nWe don't)/);
 	if (supportMatch) {
 		sections.supportItems = supportMatch[1].trim().split('\n').map(s => s.replace(/^- /, '').trim()).filter(s => s);
 	}
 }
 
 // Parse Get Involved
-const involvedMatch = contentBody.match(/## Get Involved\n\n([\s\S]*?)(?=\n---)/);
+const involvedMatch = contentBody.match(/## Get Involved\n\n([\s\S]*?)(?=\n\n---)/);
 if (involvedMatch) {
 	sections.getInvolved = involvedMatch[1].trim().split('\n\n').map(item => {
 		const parts = item.split('. ', 2);
@@ -104,6 +104,9 @@ if (involvedMatch) {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet" />
 		<title>MeetRobot Foundation - Community-Trained Humanoid Robots</title>
 		<meta name="description" content="Training humanoid robots for the common good. Open-source, community-driven robotics built by the people they serve." />
 		<meta name="keywords" content="humanoid robots, open source robotics, community robotics, nonprofit, kbot, robot training, accessible AI" />
@@ -318,9 +321,9 @@ if (involvedMatch) {
 			}
 
 			.name-handwritten {
-				font-family: 'Brush Script MT', cursive, 'Comic Sans MS', sans-serif;
+				font-family: 'Orbitron', sans-serif;
 				font-size: 5rem;
-				font-weight: bold;
+				font-weight: 700;
 				color: #2d3748;
 				position: relative;
 				z-index: 2;
@@ -608,6 +611,7 @@ if (involvedMatch) {
 
 				.name-handwritten {
 					font-size: 3.5rem;
+					font-weight: 700;
 				}
 
 				.robot-peek {
