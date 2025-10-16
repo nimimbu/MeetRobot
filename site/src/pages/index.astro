@@ -1,6 +1,101 @@
 ---
+import { getEntry } from 'astro:content';
+
 const robotName = "meetRobot";
 const googleFormUrl = "https://forms.google.com/your-form-id-here";
+
+// Get the values content
+const valuesEntry = await getEntry('values', 'index');
+const { Content } = await valuesEntry.render();
+
+// Parse sections from the markdown content
+const sections = {
+	whatWeDo: '',
+	howItWorks: '',
+	whyDifferent: '',
+	trainPrinciples: [],
+	openPrinciples: [],
+	accessiblePrinciples: [],
+	whereWeAre: '',
+	whyNonprofit: '',
+	supportItems: [],
+	getInvolved: []
+};
+
+// Extract content from the rendered markdown
+const contentBody = valuesEntry.body;
+
+// Parse What We Do section
+const whatWeDoMatch = contentBody.match(/## What We Do\n\n([\s\S]*?)(?=\n## )/);
+if (whatWeDoMatch) {
+	sections.whatWeDo = whatWeDoMatch[1].trim();
+}
+
+// Parse How It Works section
+const howItWorksMatch = contentBody.match(/## How It Works\n\n([\s\S]*?)(?=\n## )/);
+if (howItWorksMatch) {
+	const fullText = howItWorksMatch[1].trim();
+	const parts = fullText.split('\n\n');
+	sections.howItWorks = parts[0];
+	sections.howItWorksAnalogy = parts[1] || '';
+}
+
+// Parse Why We're Different section
+const whyDifferentMatch = contentBody.match(/## Why We're Different\n\n([\s\S]*?)(?=\n---)/);
+if (whyDifferentMatch) {
+	sections.whyDifferent = whyDifferentMatch[1].trim();
+}
+
+// Parse training principles
+const trainMatch = contentBody.match(/### How we train robots:\n\n([\s\S]*?)(?=\n### )/);
+if (trainMatch) {
+	sections.trainPrinciples = trainMatch[1].trim().split('\n\n').filter(p => p.trim());
+}
+
+// Parse open principles
+const openMatch = contentBody.match(/### How we stay open:\n\n([\s\S]*?)(?=\n### )/);
+if (openMatch) {
+	sections.openPrinciples = openMatch[1].trim().split('\n\n').filter(p => p.trim());
+}
+
+// Parse accessible principles
+const accessMatch = contentBody.match(/### How we stay accessible:\n\n([\s\S]*?)(?=\n---)/);
+if (accessMatch) {
+	sections.accessiblePrinciples = accessMatch[1].trim().split('\n\n').filter(p => p.trim());
+}
+
+// Parse Where We Are Now
+const whereMatch = contentBody.match(/## Where We Are Now \(2025\)\n\n([\s\S]*?)(?=\n---)/);
+if (whereMatch) {
+	const whereText = whereMatch[1].trim();
+	const parts = whereText.split('\n\n');
+	sections.whereWeAreIntro = parts[0];
+	sections.whereWeAreReality = parts[1] || '';
+	sections.whereWeAreTransparency = parts[2] || '';
+}
+
+// Parse Why We're a Nonprofit
+const nonprofitMatch = contentBody.match(/## Why We're a Nonprofit\n\n([\s\S]*?)(?=\n---)/);
+if (nonprofitMatch) {
+	const text = nonprofitMatch[1].trim();
+	sections.whyNonprofit = text.split('\n\n')[0];
+	const supportMatch = text.match(/When you support MeetRobot Foundation, you're supporting:\n([\s\S]*?)(?=\nWe don't)/);
+	if (supportMatch) {
+		sections.supportItems = supportMatch[1].trim().split('\n').map(s => s.replace(/^- /, '').trim()).filter(s => s);
+	}
+}
+
+// Parse Get Involved
+const involvedMatch = contentBody.match(/## Get Involved\n\n([\s\S]*?)(?=\n---)/);
+if (involvedMatch) {
+	sections.getInvolved = involvedMatch[1].trim().split('\n\n').map(item => {
+		const parts = item.split('. ', 2);
+		return {
+			title: parts[0],
+			description: parts[1] || ''
+		};
+	});
+}
 ---
 
 <html lang="en">
@@ -43,117 +138,67 @@ const googleFormUrl = "https://forms.google.com/your-form-id-here";
 
 				<div class="content-section">
 					<h2>What We Do</h2>
-					<p class="intro-text">We help people train humanoid robots to be useful in their communities—not for corporate profit, but for the common good. Whether it's helping in senior centers, schools, or community spaces, these robots learn from real people doing real work.</p>
+					<p class="intro-text">{sections.whatWeDo}</p>
 
 					<h2>How It Works</h2>
-					<p class="intro-text">Anyone can start a local MeetRobot node with just one robot and a passion for helping their community. You teach the robot through hands-on interaction—no programming required, AI tools help with the technical stuff. Everything you learn gets shared openly so other communities can benefit.</p>
-
-					<p class="analogy">Think of it like teaching a very eager, very clumsy intern—except this intern never gets tired, can be copied infinitely, and everything it learns can be shared with robots around the world.</p>
+					<p class="intro-text">{sections.howItWorks}</p>
+					{sections.howItWorksAnalogy && <p class="analogy">{sections.howItWorksAnalogy}</p>}
 
 					<h2>Why We're Different</h2>
-					<p class="intro-text">Most robot companies train their machines behind closed doors, optimizing for speed and profit. We train ours in public, optimizing for human dignity. The data stays open, the methods stay transparent, and the results belong to everyone.</p>
+					<p class="intro-text">{sections.whyDifferent}</p>
 
 					<div class="principles-section">
 						<h3>How we train robots:</h3>
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">Robots should be trained by the people they serve, not the companies that profit from them</div>
-						</div>
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">The best training data comes from diverse communities with diverse needs</div>
-						</div>
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">Every local node improves the global network—your robot's lessons help everyone's robots</div>
-						</div>
+						{sections.trainPrinciples.map((principle: string) => (
+							<div class="principle">
+								<div class="principle-marker"></div>
+								<div class="principle-text">{principle}</div>
+							</div>
+						))}
 
 						<h3>How we stay open:</h3>
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">All our code, methods, and finances are public (only passwords and personal info stay private)</div>
-						</div>
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">Anyone can copy our approach and start their own node—that's the goal, not a threat</div>
-						</div>
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">We curate what becomes the "official" MeetRobot methodology based on quality and values</div>
-						</div>
+						{sections.openPrinciples.map((principle: string) => (
+							<div class="principle">
+								<div class="principle-marker"></div>
+								<div class="principle-text">{principle}</div>
+							</div>
+						))}
 
 						<h3>How we stay accessible:</h3>
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">One person with one robot is enough to begin</div>
-						</div>
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">AI tools handle the technical complexity—you don't need to be a programmer</div>
-						</div>
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">If running a node requires a team or bureaucracy, we've made it too complicated</div>
-						</div>
+						{sections.accessiblePrinciples.map((principle: string) => (
+							<div class="principle">
+								<div class="principle-marker"></div>
+								<div class="principle-text">{principle}</div>
+							</div>
+						))}
 					</div>
 
 					<h2>Where We Are Now</h2>
-					<p class="reality-note"><strong>Let's be honest:</strong> Humanoid robots are brand new, clumsy, and not ready for everything you see in sci-fi movies. They're more "enthusiastic toddler" than "helpful assistant."</p>
-
-					<div class="current-reality">
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">Safety first, always - we're developing protocols as we go</div>
-						</div>
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">We're figuring out safe interaction methods together as a community</div>
-						</div>
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">Progress is slow, mistakes happen, learning is public</div>
-						</div>
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">This is ground-floor stuff - early experiments, careful steps</div>
-						</div>
-					</div>
-
-					<p class="transparency-note">Companies hide limitations until products are polished. We show you the messy middle because that's where the learning happens. If you want to see a robot perfectly pour coffee, wait 5 years and buy a commercial model. If you want to help figure out how robots can be safely useful, join us now.</p>
+					<p class="reality-note">{sections.whereWeAreIntro}</p>
+					{sections.whereWeAreReality && <p class="intro-text">{sections.whereWeAreReality}</p>}
+					{sections.whereWeAreTransparency && <p class="transparency-note">{sections.whereWeAreTransparency}</p>}
 
 					<h2>Why We're a Nonprofit</h2>
-					<p class="intro-text">These aren't business decisions. They're principles for building technology worth trusting.</p>
+					<p class="intro-text">{sections.whyNonprofit}</p>
 
 					<p class="support-text"><strong>When you support MeetRobot Foundation, you're supporting:</strong></p>
 					<div class="support-items">
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">Community-driven training principles</div>
-						</div>
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">Radical transparency in robotics</div>
-						</div>
-						<div class="principle">
-							<div class="principle-marker"></div>
-							<div class="principle-text">Open methodology that anyone can audit</div>
-						</div>
+						{sections.supportItems.map((item: string) => (
+							<div class="principle">
+								<div class="principle-marker"></div>
+								<div class="principle-text">{item}</div>
+							</div>
+						))}
 					</div>
 
 					<h2>Get Involved</h2>
 					<div class="get-involved">
-						<div class="involvement-option">
-							<strong>Start a node</strong>
-							<p>Buy a robot, do a demo, see where it goes</p>
-						</div>
-						<div class="involvement-option">
-							<strong>Join a node</strong>
-							<p>Find a local group and help train</p>
-						</div>
-						<div class="involvement-option">
-							<strong>Support the network</strong>
-							<p>Donate to keep the infrastructure running</p>
-						</div>
+						{sections.getInvolved.slice(0, 3).map((item: {title: string, description: string}) => (
+							<div class="involvement-option">
+								<strong>{item.title}</strong>
+								<p>{item.description}</p>
+							</div>
+						))}
 						<a href="https://github.com/nimimbu/MeetRobot" class="involvement-option involvement-link" target="_blank" rel="noopener noreferrer">
 							<strong>Check out our code</strong>
 							<p>Audit, fork, improve</p>
